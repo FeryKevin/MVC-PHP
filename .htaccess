@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteRule ^home$ index.php
+
+RewriteEngine on
+RewriteRule ^([a-zA-Z0-9\-\/]*)$ index.php?action=$1
