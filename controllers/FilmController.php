@@ -26,18 +26,16 @@ function add(){
 }
 
 function library(){
-    if($_SESSION == null){
-        login();
-    } else {
-        if($_SESSION != null){
-            login();
-        }
-        else{
-            $films = Film::getFilms();
-            require_once('views/film/library.php');
-        }
+    if(null === $_SESSION['user_id']){
+        header("Location: /login");
+        
+        return;
     }
-}
+    
+    $films = Film::getFilms();
+
+    require_once('views/film/library.php');
+}   
 
 function update($id){
     $film = Film::getFilmById($id);

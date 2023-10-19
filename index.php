@@ -3,10 +3,14 @@
 require_once 'controllers/FilmController.php';
 require_once 'controllers/UserController.php';
 
+session_start();
+
 $funcName = substr($_SERVER['REQUEST_URI'], 1);
 
 if (function_exists($funcName)){
     $funcName(...$_GET);
+
+    exit(0);
 } else {    
     die('404');
 }

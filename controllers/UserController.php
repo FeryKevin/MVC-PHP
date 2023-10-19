@@ -34,16 +34,23 @@ function login(){
         $user = User::getByEmail($email);
 
         if($user && password_verify($password, $user->getPassword())){
-            session_start();
             $_SESSION['user_id'] = $user->getId();
             $_SESSION['username'] = $user->getUsername();
             $_SESSION['email'] = $user->getEmail();
-            header("Location: /Film/library");
-            exit;
+
+            header("Location: /library");
+            return;
+
         } else {
             $message = "Identifiants incorrects.";
         }
     }
 
     require_once('views/user/login.php');
+}
+
+function logout() {
+    unset($_SESSION['user_id'], $_SESSION['email'], $_SESSION['username']);
+
+    header("Location: /login");
 }
