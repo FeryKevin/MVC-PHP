@@ -16,13 +16,20 @@ function signin(){
 
             if($user){
                 $message = "Inscription réussie";
+
+                $_SESSION['user_id'] = $user->getid();
+                $_SESSION['username'] = $user->getUsername();
+                $_SESSION['email'] = $user->getEmail();
+
+                header("Location: /library");
             } else {
                 $message = "Erreur lors de l'inscription";
             }
+
         }
     }
 
-    require_once('views/signin.php');
+    require_once('views/user/signin.php');
 }
 
 function login(){

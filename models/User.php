@@ -9,12 +9,15 @@ Class User{
     private DateTime $created_At;
     private DateTime $updated_At;
     
-    public function __construct()
+    public function __construct(string $username, string $email, string $password)
     {
+        $this->username = $username;
+        $this->email = $email;
+        $this->password = $password;        
     }
 
-    public function getId(): int {
-        return $this->id;
+    public function getId(): ?int {
+        return $this->id ?? null;
     }
 
     public function setId(int $id): void {
@@ -71,12 +74,20 @@ Class User{
 
             $stat->bindParam(':username', $username, PDO::PARAM_STR);
             $stat->bindParam(':email', $email, PDO::PARAM_STR);
-            $stat->bindParam(':password', $password, PDO::PARAM_STR);
+            $stat->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
             $stat->execute();
 
             $user_id = $db->lastInsertId();
 
-            return new User ($user_id, $username, $email, $password, new DateTime(), new DateTime());
+            $user = new User ($user_id, $username, $email, $hashedPassword, new DateTime(), new DateTime());
+
+            $_SESSION['user_id'] = $user->getId();
+            $_SESSION['username'] = $user->getUsername();
+            $_SESSION['email'] = $user->getEmail();
+
+            $user->setId($user_id);
+
+            return $user;
         } catch (PDOException $e) {
             die('Erreur de requête : ' . $e->getMessage());
         }
@@ -89,11 +100,8 @@ Class User{
         $userData = $stmt->fetch(PDO::FETCH_ASSOC);
     
         if ($userData) {
-            $user = new User();
+            $user = new User($userData['username'], $userData['email'], $userData['password']);
             $user->setId($userData['id']);
-            $user->setUsername($userData['username']);
-            $user->setEmail($userData['email']);
-            $user->setPassword($userData['password']);
             $created_at = new DateTime($userData['created_at']);
             $user->setCreatedAt($created_at);
             $updated_at = new DateTime($userData['updated_at']);

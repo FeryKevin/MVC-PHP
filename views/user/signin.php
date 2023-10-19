@@ -8,4 +8,6 @@
 
     <label for="password">Mot de passe :</label>
     <input type="text" id="password" name="password" required>
+
+    <button type="submit">Ibscr</button>
 </form>

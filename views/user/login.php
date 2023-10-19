@@ -11,6 +11,8 @@
             <p><?php if(isset($message)){echo ($message);}?></p>
 
             <button type="submit">Connexion</button>
+
+            <a href='/signin'>Inscription</a>
             
         </form>
     </div>
