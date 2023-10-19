@@ -96,6 +96,19 @@ Class Film{
         $this->user = $user;
     }
 
+    public static function getFilms(){
+        $user_id = $_SESSION['user_id'];
+        try{
+            $db = connection();
+            $stat = $db->prepare("SELECT * FROM film WHERE user_id = $user_id");
+            $stat->execute();
+            $films = $stat->fetchAll(PDO::FETCH_ASSOC);
+            return $films;
+        } catch (PDOException $e) {
+            die('Erreur de requête : ' . $e->getMessage());
+        }
+    }
+
     public function add($title, $producer, $synopsis, $type, $scenarist, $productionCompany, $user){
         $db = connection();
         $stat = $db->prepare('INSERT INTO film (title, producer, synopsis, type, scenarist, productionCompany, releaseYear)
@@ -108,18 +121,6 @@ Class Film{
         $stat->bindParam(':productionCompany', $productionCompany, PDO::PARAM_STR);
         $stat->bindParam(':user', $user, PDO::PARAM_INT);
         $stat->execute();
-    }
-
-    public static function getFilms(){
-        try{
-            $db = connection();
-            $stat = $db->prepare("SELECT * FROM film");
-            $stat->execute();
-            $films = $stat->fetchAll(PDO::FETCH_ASSOC);
-            return $films;
-        } catch (PDOException $e) {
-            die('Erreur de requête : ' . $e->getMessage());
-        }
     }
 
     public static function getFilmById($filmId){
