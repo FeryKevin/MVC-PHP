@@ -44,6 +44,17 @@ function update($id){
         $message = "Film introuvable";
     } else {
         require_once('views/film/updateForm.php');
+        if(isset($_POST['submit'])){
+            $film->setTitle($_POST['title']);
+            $film->setProducer($_POST['producer']);
+            $film->setSynopsis($_POST['synopsis']);
+            $film->setType($_POST['type']);
+            $film->setScenarist($_POST['scenarist']);
+            $film->setProductionCompany($_POST['productionCompany']);
+            $film->setReleaseYear($_POST['releaseYear']);
+            Film::update($film);
+            header("Location: /library");
+        }
     }
 }
 

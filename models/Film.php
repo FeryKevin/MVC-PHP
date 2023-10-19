@@ -114,7 +114,7 @@ Class Film{
     public function add($title, $producer, $synopsis, $type, $scenarist, $productionCompany, $releaseYear){
         $user_id = $_SESSION['user_id'];
         $db = connection();
-        
+
         $stat = $db->prepare('INSERT INTO film (title, producer, synopsis, type, scenarist, productionCompany, releaseYear, user_id) 
             VALUES (:title, :producer, :synopsis, :type, :scenarist, :productionCompany, :releaseYear, :user_id)');
         $stat->bindParam(':title', $title, PDO::PARAM_STR);
@@ -141,26 +141,30 @@ Class Film{
             $stat->bindParam(':id', $filmId, PDO::PARAM_INT);
             $stat->execute();
             $film = $stat->fetch(PDO::FETCH_ASSOC);
+            $film = new Film($film['title'], $film['producer'], $film['synopsis'], $film['type'], $film['scenarist'], $film['productionCompany'], $film['releaseYear'], $film['user_id'],);
+            $film->setId($filmId);
+            
             return $film;
         } catch (PDOException $e) {
             die('Erreur de requête : ' . $e->getMessage());
         }
     }
 
-    public function update($id, $title, $producer, $synopsis, $type, $scenarist, $productionCompany, $user){
+    public static function update($film){
         try {
             $db = connection();
-            $stat = $db->prepare('UPDATE film SET title = :title, producer= :producer, synopsis= :synopsis, type= :type, scenarist= :scenarist, productionCompany= :productionCompany, releaseYear= :releaseYear)
+            $stat = $db->prepare('UPDATE film SET title = :title, producer= :producer, synopsis= :synopsis, type= :type, scenarist= :scenarist, productionCompany= :productionCompany, releaseYear= :releaseYear
                 WHERE id = :id');
-            $stat->bindParam(':id', $id, PDO::PARAM_INT);
-            $stat->bindParam(':title', $title, PDO::PARAM_STR);
-            $stat->bindParam(':producer', $producer, PDO::PARAM_STR);
-            $stat->bindParam(':synopsis', $synopsis, PDO::PARAM_STR);
-            $stat->bindParam(':type', $type, PDO::PARAM_STR);
-            $stat->bindParam(':scenarist', $scenarist, PDO::PARAM_STR);
-            $stat->bindParam(':productionCompany', $productionCompany, PDO::PARAM_STR);
-            $stat->bindParam(':user', $user, PDO::PARAM_INT);
+            $stat->bindValue(':id', $film->getId(), PDO::PARAM_INT);
+            $stat->bindValue(':title', $film->getTitle(), PDO::PARAM_STR);
+            $stat->bindValue(':producer', $film->getProducer(), PDO::PARAM_STR);
+            $stat->bindValue(':synopsis', $film->getSynopsis(), PDO::PARAM_STR);
+            $stat->bindValue(':type', $film->getType(), PDO::PARAM_STR);
+            $stat->bindValue(':scenarist', $film->getScenarist(), PDO::PARAM_STR);
+            $stat->bindValue(':productionCompany', $film->getProductionCompany(), PDO::PARAM_STR);
+            $stat->bindValue(':releaseYear', $film->getReleaseYear(), PDO::PARAM_STR);
             $stat->execute();
+            
         } catch (PDOException $e) {
             die('Erreur de requête : ' . $e->getMessage());
         }
