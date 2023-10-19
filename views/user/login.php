@@ -1,7 +1,7 @@
 <div>
     <h2>Connexion</h2>
     <div>
-        <form action="" method="post">
+        <form action="/login" method="post">
             <label for="email">Email :</label>
             <input type="email" id="email" name="email" required>
 

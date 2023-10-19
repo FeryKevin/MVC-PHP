@@ -1,16 +1,15 @@
-<pre>
-
 <?php
 
-$funcName = $_SERVER['REQUEST_URI'];
+require_once 'controllers/FilmController.php';
+require_once 'controllers/UserController.php';
 
-var_dump(substr($funcName, 1));
+$funcName = substr($_SERVER['REQUEST_URI'], 1);
 
 if (function_exists($funcName)){
     $funcName(...$_GET);
+} else {    
+    die('404');
 }
-
-die();
 
 
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
