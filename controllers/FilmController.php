@@ -29,8 +29,13 @@ function library(){
     if($_SESSION == null){
         login();
     } else {
-        $films = Film::getFilms();
-        require_once('views/film/library.php');
+        if($_SESSION != null){
+            login();
+        }
+        else{
+            $films = Film::getFilms();
+            require_once('views/film/library.php');
+        }
     }
 }
 
@@ -52,5 +57,5 @@ function delete($id){
     }
 
     $films = Film::getFilms();
-    require_once('views/livre/library.php');
+    require_once('views/film/library.php');
 }
