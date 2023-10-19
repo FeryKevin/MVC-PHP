@@ -20,4 +20,8 @@
 
     <label for="releaseYear">Anné de sortie :</label>
     <input type="text" id="releaseYear" name="releaseYear" required>
+
+    <button type="submit">Ajouter</button>
+
+    <a href='/library'>retour</a>
 </form>

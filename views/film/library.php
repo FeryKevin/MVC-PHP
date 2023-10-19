@@ -1,5 +1,6 @@
 <div class="container">
     <a href='/logout'>deconnter</a>
+    <a href='/add'>ajouter</a>
     <h2>Liste des film : </h2>
     <div class="row">
         <?php foreach ($films as $film): ?>

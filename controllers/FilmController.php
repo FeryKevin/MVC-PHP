@@ -12,10 +12,11 @@ function add(){
         $scenarist = $_POST['scenarist'];
         $productionCompany = $_POST['productionCompany'];
         $releaseYear = $_POST['releaseYear'];
+        $user_id = $_SESSION['user_id'];
 
         if(!empty($title) && !empty($producer) && !empty($synopsis) && !empty($type) && !empty($scenarist) && !empty($productionCompany) && !empty($releaseYear)){
-            $film = new Film(null, $title, $producer, $synopsis, $type, $scenarist, $productionCompany, $releaseYear, 1);
-            $film->add($title, $producer, $synopsis, $type, $scenarist, $productionCompany, $releaseYear, 1);
+            $film = new Film($title, $producer, $synopsis, $type, $scenarist, $productionCompany, $releaseYear, $user_id);
+            $film->add($title, $producer, $synopsis, $type, $scenarist, $productionCompany, $releaseYear, $user_id);
             echo 'Film ajouté';
         } else {
             echo 'Tous les champs doivent être remplis.';
