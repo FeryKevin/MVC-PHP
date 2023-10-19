@@ -53,8 +53,9 @@ function delete($id){
         $message = "Film introuvable";
     } else {
         Film::delete($id);
+        header("Location: /library");
     }
-
+    
     $films = Film::getFilms();
     require_once('views/film/library.php');
 }

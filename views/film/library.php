@@ -11,7 +11,7 @@
             <p><?= $film['scenarist'] ?></p>
             <p><?= $film['productionCompany'] ?></p>
             <p><?= $film['releaseYear'] ?></p>
-            <a href="delete/<?= $film['id'] ?>">Supprimer</a>
+            <a href="delete?id=<?= $film['id'] ?>">Supprimer</a>
         <?php endforeach; ?>
     </div>
 </div>

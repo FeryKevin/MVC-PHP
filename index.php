@@ -10,6 +10,7 @@ require_once 'controllers/UserController.php';
 session_start();
 
 $funcName = substr($_SERVER['REQUEST_URI'], 1);
+$funcName = explode('?', $funcName)[0];
 
 if($funcName === ""){
     $funcName = 'login';
