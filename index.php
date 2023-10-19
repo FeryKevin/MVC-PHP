@@ -11,6 +11,10 @@ session_start();
 
 $funcName = substr($_SERVER['REQUEST_URI'], 1);
 
+if($funcName === ""){
+    $funcName = 'login';
+}
+
 if (function_exists($funcName)){
     $funcName(...$_GET);
 
