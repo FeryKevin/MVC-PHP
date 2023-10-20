@@ -6,7 +6,11 @@
         <input type="text" id="username" name="username" required>
         <label for="email">Email :</label>
         <input type="text" id="email" name="email" required>
-        <label for="password">Mot de passe :</label>
+        <label for="password">Mot de passe : </label>
+        <div class="password-cond">
+            <p>- Le mot de passe ne soit pas contenir votre identifiant</p>
+            <p>- 8 caractères dont : 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial</p>
+        </div>
         <input type="text" id="password" name="password" required>
     </div>    
     <div class="btn">
