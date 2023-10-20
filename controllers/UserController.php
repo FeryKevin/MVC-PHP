@@ -13,9 +13,13 @@ function signin(){
             $message = "L'email existe déjà";
         } else { 
             if(!empty($username) && !empty($email) && !empty($password)){
-                $user = User::create($username, $email, $password);
-                if($user){
-                    $message = "Inscription réussie";
+                if (preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).{8,}$/', $password)) {
+                    $user = User::create($username, $email, $password);
+                    if($user){
+                        $message = "Inscription réussie";
+                    }
+                }else{
+                    $message = "Veuillez respecter les conditions pour le mot de passe.";
                 }
             } else {
                 $message = "Veuillez remplir tous les champs";
