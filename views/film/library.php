@@ -1,6 +1,7 @@
 <div class="container">
     <a href='/logout'>deconnter</a>
     <a href='/add'>ajouter</a>
+    <?php echo $_SESSION['username'];?>
     <h2>Liste des film : </h2>
     <div class="row">
         <?php foreach ($films as $film): ?>
