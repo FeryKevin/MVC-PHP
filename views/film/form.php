@@ -4,7 +4,7 @@
     <div class="form-crud">
         <label for="title">Titre :</label>
         <input type="text" id="title" name="title" required>
-        <label for="producer">Producteur :</label>
+        <label for="producer">Réalisateur :</label>
         <input type="text" id="producer" name="producer" required>
         <label for="synopsis">Synopsis :</label>
         <input type="text" id="synopsis" name="synopsis" required>
