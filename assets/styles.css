@@ -1,7 +1,73 @@
+/* ALL */
+
 *{
     padding: 0;
     margin: 0;
 }
+
+h1, h2{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    margin: 30px 0px;
+}
+
+.btn2{
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.btn-add, .btn-up, .btn-dl, .btn-retour{
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+    border: none;
+}
+
+.btn-add{
+    background-color: green;
+}
+
+.btn-up{
+    background-color: green; 
+}
+
+.btn-dl{
+    background-color: red;
+}
+
+.btn-retour{
+    background-color: #696969;
+}
+
+.btn-add:hover, .btn-up:hover, .btn-dl:hover, .btn-retour:hover{
+    padding: 15px;
+    transition: 0.5s;
+}
+
+label{
+    font-size: 18px;
+    margin: 25px 0px;
+}
+
+input{
+    width: 30%;
+    height: 25px;
+}
+
+.error{
+    color: red;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+/* NAVBAR */
 
 .navbar {
     background-color: #696969;
@@ -21,10 +87,7 @@
     font-size: 18px;
 }
 
-h1, h2{
-    text-align: center;
-    margin-top: 50px;
-}
+/* CRUD */
 
 .film-view{
     display: flex;
@@ -42,80 +105,12 @@ thead{
     background-color: #696969;
 }
 
-.btn{
-    display: flex;
-    justify-content: center;
-    margin: 30px 0px;
-}
-
-.btn-add{
-    background-color: green;
-    padding: 10px;
-    border-radius: 15px;
-    color: white;
-    text-decoration: none;
-    border: none;
-}
-
-.btn-up{
-    background-color: green;
-    padding: 10px;
-    border-radius: 15px;
-    color: white;
-    text-decoration: none;   
-}
-
-.btn-dl{
-    background-color: red;
-    padding: 10px;
-    border-radius: 15px;
-    color: white;
-    text-decoration: none;
-    border: none;
-}
-
-.btn2{
-    margin-left: 50px;
-    margin-bottom: 20px;
-}
-
-.btn-retour{
-    background-color: #696969;
-    padding: 10px;
-    border-radius: 15px;
-    color: white;
-    text-decoration: none;
-}
-
-.btn-add:hover, .btn-up:hover, .btn-dl:hover, .btn-retour:hover{
-    padding: 15px;
-    transition: 0.5s;
-}
-
-
 .form-crud{
     display: flex;
     flex-direction: column;
 	justify-content: center;
 	align-items: center;
     margin: 30px 0px;
-}
-
-label{
-    font-size: 18px;
-    margin: 25px 0px;
-}
-
-input{
-    width: 30%;
-    height: 25px;
-}
-
-.error{
-    color: red;
-    text-align: center;
-    font-size: 18px;
-    margin-top: 30px;
 }
 
 .password-cond{
