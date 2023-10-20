@@ -64,37 +64,12 @@ Class User{
         $this->updated_At = $updated_At;
     }
 
-    public static function create($username, $email, $password){
-        try {
-            $db = connection();
-            $stat = $db->prepare('INSERT INTO user (username, email, password, created_at, updated_at)
-                VALUES (:username, :email, :password, NOW(), NOW())');
-
-            $hashedPassword = password_hash($password, PASSWORD_ARGON2I);
-
-            $stat->bindParam(':username', $username, PDO::PARAM_STR);
-            $stat->bindParam(':email', $email, PDO::PARAM_STR);
-            $stat->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
-            $stat->execute();
-
-            $user_id = $db->lastInsertId();
-
-            $user = new User ($user_id, $username, $email, $hashedPassword, new DateTime(), new DateTime());
-
-            $user->setId($user_id);
-
-            return $user;
-        } catch (PDOException $e) {
-            die('Erreur de requête : ' . $e->getMessage());
-        }
-    }
-
+    /* EMAIL VERIFY */
     public static function getByEmail($email) {
         $db = connection();
         $stmt = $db->prepare("SELECT * FROM user WHERE email = :email");
         $stmt->execute(['email' => $email]);
         $userData = $stmt->fetch(PDO::FETCH_ASSOC);
-    
         if ($userData) {
             $user = new User($userData['username'], $userData['email'], $userData['password']);
             $user->setId($userData['id']);
@@ -106,6 +81,27 @@ Class User{
             return $user;
         } else {
             return null;
+        }
+    }
+
+    /* REGISTER */
+    public static function create($username, $email, $password){
+        try {
+            $db = connection();
+            $stat = $db->prepare('INSERT INTO user (username, email, password, created_at, updated_at)
+                VALUES (:username, :email, :password, NOW(), NOW())');
+            $hashedPassword = password_hash($password, PASSWORD_ARGON2I);
+            $stat->bindParam(':username', $username, PDO::PARAM_STR);
+            $stat->bindParam(':email', $email, PDO::PARAM_STR);
+            $stat->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
+            $stat->execute();
+            $user_id = $db->lastInsertId();
+            $user = new User ($user_id, $username, $email, $hashedPassword, new DateTime(), new DateTime());
+            $user->setId($user_id);
+
+            return $user;
+        } catch (PDOException $e) {
+            die('Erreur de requête : ' . $e->getMessage());
         }
     }
 }

@@ -15,7 +15,8 @@ Class Film{
     private string $releaseYear;
     private User $user;
     
-    public function __construct(string $title, string $producer, string $synopsis, string $type, string $scenarist, string $productionCompany, string $releaseYear)
+    public function __construct(string $title, string $producer, string $synopsis, 
+        string $type, string $scenarist, string $productionCompany, string $releaseYear)
     {
         $this->title = $title;
         $this->producer = $producer;
@@ -98,6 +99,7 @@ Class Film{
         $this->user = $user;
     }
 
+    /* VIEW */
     public static function getFilms(){
         $user_id = $_SESSION['user_id'];
         try{
@@ -111,10 +113,12 @@ Class Film{
         }
     }
 
-    public function add($title, $producer, $synopsis, $type, $scenarist, $productionCompany, $releaseYear){
+    /* ADD */
+    public function add($title, $producer, $synopsis, $type, 
+        $scenarist, $productionCompany, $releaseYear){
+        
         $user_id = $_SESSION['user_id'];
         $db = connection();
-
         $stat = $db->prepare('INSERT INTO film (title, producer, synopsis, type, scenarist, productionCompany, releaseYear, user_id) 
             VALUES (:title, :producer, :synopsis, :type, :scenarist, :productionCompany, :releaseYear, :user_id)');
         $stat->bindParam(':title', $title, PDO::PARAM_STR);
@@ -126,14 +130,15 @@ Class Film{
         $stat->bindParam(':releaseYear', $releaseYear, PDO::PARAM_STR);
         $stat->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stat->execute();
-
         $film_id = $db->lastInsertId();
-        $film = new Film ($film_id, $title, $producer, $synopsis, $type, $scenarist, $productionCompany, $releaseYear, $user_id);
+        $film = new Film ($film_id, $title, $producer, $synopsis, 
+            $type, $scenarist, $productionCompany, $releaseYear, $user_id);
         $film->setId($film_id);
 
         return $film;
     }    
 
+    /* ID */
     public static function getFilmById($filmId){
         try {
             $db = connection();
@@ -150,6 +155,7 @@ Class Film{
         }
     }
 
+    /* UPDATE */
     public static function update($film){
         try {
             $db = connection();
@@ -163,13 +169,13 @@ Class Film{
             $stat->bindValue(':scenarist', $film->getScenarist(), PDO::PARAM_STR);
             $stat->bindValue(':productionCompany', $film->getProductionCompany(), PDO::PARAM_STR);
             $stat->bindValue(':releaseYear', $film->getReleaseYear(), PDO::PARAM_STR);
-            $stat->execute();
-            
+            $stat->execute();   
         } catch (PDOException $e) {
             die('Erreur de requête : ' . $e->getMessage());
         }
     }
 
+    /* DELETE */
     public static function delete($id){
         try {
             $db = connection();
