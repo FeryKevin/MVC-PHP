@@ -8,20 +8,18 @@ function signin(){
         $password = $_POST['password'];
 
         $existingUser = User::getByEmail($email);
-
+        
         if($existingUser){
-            $mailTaker = "L'email existe déjà";
-        } else {
-            $user = User::create($username, $email, $password);
-
-            if($user){
-                $message = "Inscription réussie";
-
-                header("Location: /signin");
+            $message = "L'email existe déjà";
+        } else { 
+            if(!empty($username) && !empty($email) && !empty($password)){
+                $user = User::create($username, $email, $password);
+                if($user){
+                    $message = "Inscription réussie";
+                }
             } else {
-                $message = "Erreur lors de l'inscription";
+                $message = "Veuillez remplir tous les champs";
             }
-
         }
     }
 
