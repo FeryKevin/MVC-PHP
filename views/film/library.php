@@ -15,12 +15,13 @@
         </thead>
         <tbody>
             <?php foreach ($films as $film): ?>
-                <td><?= $film['title'] ?></td>
-                <td><?= $film['producer'] ?></td>
-                <td><?= $film['synopsis'] ?></td>
-                <td><a class="btn-up" href="/update?id=<?= $film['id'] ?>">Modifier</a></td>
-                <td><a class="btn-dl" href="delete?id=<?= $film['id'] ?>">Supprimer</a></td>
-                <br>
+                <tr>
+                    <td><?= $film['title'] ?></td>
+                    <td><?= $film['producer'] ?></td>
+                    <td><?= $film['synopsis'] ?></td>
+                    <td><a class="btn-up" href="/update?id=<?= $film['id'] ?>">Modifier</a></td>
+                    <td><a class="btn-dl" href="delete?id=<?= $film['id'] ?>">Supprimer</a></td>
+                </tr>
             <?php endforeach; ?>
         </tbody>
     </table>

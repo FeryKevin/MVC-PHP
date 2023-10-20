@@ -3,7 +3,7 @@
     margin: 0;
 }
 
-h2{
+h1, h2{
     text-align: center;
     margin-top: 50px;
 }
@@ -36,6 +36,7 @@ thead{
     border-radius: 15px;
     color: white;
     text-decoration: none;
+    border: none;
 }
 
 .btn-up{
@@ -54,7 +55,46 @@ thead{
     text-decoration: none;
 }
 
-.btn-add:hover, .btn-up:hover, .btn-dl:hover{
+.btn2{
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.btn-retour{
+    background-color: #696969;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-add:hover, .btn-up:hover, .btn-dl:hover, .btn-retour:hover{
     padding: 15px;
     transition: 0.5s;
+}
+
+
+.form-crud{
+    display: flex;
+    flex-direction: column;
+	justify-content: center;
+	align-items: center;
+    margin: 30px 0px;
+}
+
+label{
+    font-size: 18px;
+    margin: 25px 0px;
+}
+
+input{
+    width: 30%;
+    height: 25px;
+}
+
+.error{
+    color: red;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 30px;
 }

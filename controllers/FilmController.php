@@ -17,9 +17,9 @@ function add(){
         if(!empty($title) && !empty($producer) && !empty($synopsis) && !empty($type) && !empty($scenarist) && !empty($productionCompany) && !empty($releaseYear)){
             $film = new Film($title, $producer, $synopsis, $type, $scenarist, $productionCompany, $releaseYear, $user_id);
             $film->add($title, $producer, $synopsis, $type, $scenarist, $productionCompany, $releaseYear, $user_id);
-            echo 'Film ajouté';
+            $message =  'Film ajouté';
         } else {
-            echo 'Tous les champs doivent être remplis.';
+            $message = 'Tous les champs doivent être remplis.';
         }
     }
 
