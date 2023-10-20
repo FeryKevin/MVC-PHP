@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="assets/styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <?php
 
 ini_set('display_errors', 1);

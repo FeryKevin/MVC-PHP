@@ -1,19 +1,30 @@
-<div class="container">
-    <a href='/logout'>deconnter</a>
-    <a href='/add'>ajouter</a>
-    <?php echo $_SESSION['username'];?>
-    <h2>Liste des film : </h2>
-    <div class="row">
-        <?php foreach ($films as $film): ?>
-            <p><?= $film['title'] ?></p>
-            <p><?= $film['producer'] ?></p>
-            <p><?= $film['synopsis'] ?></p>
-            <p><?= $film['type'] ?></p>
-            <p><?= $film['scenarist'] ?></p>
-            <p><?= $film['productionCompany'] ?></p>
-            <p><?= $film['releaseYear'] ?></p>
-            <a href="/update?id=<?= $film['id'] ?>">Modifier</a>
-            <a href="delete?id=<?= $film['id'] ?>">Supprimer</a>
-        <?php endforeach; ?>
-    </div>
+<h2>Liste des films :</h2>
+<div class="btn">
+    <a href='/add' class="btn-add">Ajouter +</a>
 </div>
+<div class="film-view">
+    <table>
+        <thead>
+            <tr>
+                <th>Nom du film</th>
+                <th>Producteur</th>
+                <th>Synopsis</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($films as $film): ?>
+                <td><?= $film['title'] ?></td>
+                <td><?= $film['producer'] ?></td>
+                <td><?= $film['synopsis'] ?></td>
+                <td><a class="btn-up" href="/update?id=<?= $film['id'] ?>">Modifier</a></td>
+                <td><a class="btn-dl" href="delete?id=<?= $film['id'] ?>">Supprimer</a></td>
+                <br>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
+ <!-- <a href='/logout'>Déconnecter</a>
+ < ?php echo $_SESSION['username'];?> -->

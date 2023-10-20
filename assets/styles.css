@@ -1,0 +1,60 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+h2{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.film-view{
+    display: flex;
+	justify-content: center;
+}
+
+table, th, td{
+    border-collapse: collapse;
+    border: 1px solid black;
+    padding: 30px;
+}
+
+thead{
+    color: #fff;
+    background-color: #696969;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    margin: 30px 0px;
+}
+
+.btn-add{
+    background-color: green;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-up{
+    background-color: green;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;   
+}
+
+.btn-dl{
+    background-color: red;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-add:hover, .btn-up:hover, .btn-dl:hover{
+    padding: 15px;
+    transition: 0.5s;
+}
