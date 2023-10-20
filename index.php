@@ -13,7 +13,7 @@ require_once 'controllers/UserController.php';
 
 session_start();
 
-// require('views/includes/navbar.php');
+require('views/includes/navbar.php');
 
 $funcName = substr($_SERVER['REQUEST_URI'], 1);
 $funcName = explode('?', $funcName)[0];

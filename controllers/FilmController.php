@@ -52,12 +52,13 @@ function update($id){
             $film->setScenarist($_POST['scenarist']);
             $film->setProductionCompany($_POST['productionCompany']);
             $film->setReleaseYear($_POST['releaseYear']);
-            if(empty($film->getTitle()) || empty($film->getProducer()) || empty($film->getSynopsis()) || empty($film->getType()) || empty($film->getScenarist()) || empty($film->getProductionCompany()) || empty($film->getReleaseYear())){
-                $message = 'Tous les champs doivent être remplis.';
-            } else {
+
+            if(!empty($film->getTitle()) && !empty($film->getProducer()) && !empty($film->getSynopsis()) && !empty($film->getType()) && !empty($film->getScenarist()) && !empty($film->getProductionCompany()) && !empty($film->getReleaseYear())){
                 Film::update($film);
                 header("Location: /library");
-            }            
+            } else {
+                $message = "Veuillez remplir tous les champs";
+            }
         }
     }
 }

@@ -7,7 +7,7 @@
         <thead>
             <tr>
                 <th>Nom du film</th>
-                <th>Producteur</th>
+                <th>Réalisateur</th>
                 <th>Synopsis</th>
                 <th>Modifier</th>
                 <th>Supprimer</th>
