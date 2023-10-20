@@ -81,10 +81,6 @@ Class User{
 
             $user = new User ($user_id, $username, $email, $hashedPassword, new DateTime(), new DateTime());
 
-            $_SESSION['user_id'] = $user->getId();
-            $_SESSION['username'] = $user->getUsername();
-            $_SESSION['email'] = $user->getEmail();
-
             $user->setId($user_id);
 
             return $user;

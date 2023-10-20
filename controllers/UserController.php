@@ -17,11 +17,7 @@ function signin(){
             if($user){
                 $message = "Inscription réussie";
 
-                $_SESSION['user_id'] = $user->getid();
-                $_SESSION['username'] = $user->getUsername();
-                $_SESSION['email'] = $user->getEmail();
-
-                header("Location: /library");
+                header("Location: /signin");
             } else {
                 $message = "Erreur lors de l'inscription";
             }
