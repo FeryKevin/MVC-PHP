@@ -3,8 +3,23 @@
 require_once('models/Film.php');
 require_once('UserController.php');
 
+/* VIEW */
+function library(){
+    if(null === $_SESSION['user_id']){
+        header("Location: /login");
+        
+        return;
+    }
+    $films = Film::getFilms();
+    require_once('views/film/library.php');
+}   
+
+/* AJOUT */
 function add(){
-    if(isset($_POST['title'], $_POST['producer'], $_POST['synopsis'], $_POST['type'], $_POST['scenarist'], $_POST['productionCompany'], $_POST['releaseYear'])){
+    if(isset($_POST['title'], $_POST['producer'], $_POST['synopsis'], 
+        $_POST['type'], $_POST['scenarist'], $_POST['productionCompany'], 
+        $_POST['releaseYear'])){
+        
         $title = $_POST['title'];
         $producer = $_POST['producer'];
         $synopsis = $_POST['synopsis'];
@@ -14,7 +29,9 @@ function add(){
         $releaseYear = $_POST['releaseYear'];
         $user_id = $_SESSION['user_id'];
 
-        if(!empty($title) && !empty($producer) && !empty($synopsis) && !empty($type) && !empty($scenarist) && !empty($productionCompany) && !empty($releaseYear)){
+        if(!empty($title) && !empty($producer) && !empty($synopsis) && !empty($type) 
+            && !empty($scenarist) && !empty($productionCompany) && !empty($releaseYear)){
+            
             $film = new Film($title, $producer, $synopsis, $type, $scenarist, $productionCompany, $releaseYear, $user_id);
             $film->add($title, $producer, $synopsis, $type, $scenarist, $productionCompany, $releaseYear, $user_id);
             $message =  'Film ajouté';
@@ -22,22 +39,10 @@ function add(){
             $message = 'Tous les champs doivent être remplis.';
         }
     }
-
     require_once('views/film/form.php');
 }
 
-function library(){
-    if(null === $_SESSION['user_id']){
-        header("Location: /login");
-        
-        return;
-    }
-    
-    $films = Film::getFilms();
-
-    require_once('views/film/library.php');
-}   
-
+/* UPDATE */
 function update($id){
     $film = Film::getFilmById($id);
     if(!$film){
@@ -53,7 +58,9 @@ function update($id){
             $film->setProductionCompany($_POST['productionCompany']);
             $film->setReleaseYear($_POST['releaseYear']);
 
-            if(!empty($film->getTitle()) && !empty($film->getProducer()) && !empty($film->getSynopsis()) && !empty($film->getType()) && !empty($film->getScenarist()) && !empty($film->getProductionCompany()) && !empty($film->getReleaseYear())){
+            if(!empty($film->getTitle()) && !empty($film->getProducer()) && !empty($film->getSynopsis()) 
+                && !empty($film->getType()) && !empty($film->getScenarist()) 
+                && !empty($film->getProductionCompany()) && !empty($film->getReleaseYear())){
                 Film::update($film);
                 header("Location: /library");
             } else {
@@ -63,6 +70,7 @@ function update($id){
     }
 }
 
+/* DELETE */
 function delete($id){
     $film = Film::getFilmById($id);
     if(!$film){
@@ -71,7 +79,6 @@ function delete($id){
         Film::delete($id);
         header("Location: /library");
     }
-    
     $films = Film::getFilms();
     require_once('views/film/library.php');
 }
