@@ -8,13 +8,13 @@
         <input type="text" id="producer" name="producer" value="<?=$film->getProducer()?>">
         <label for="synopsis">Synopsis :</label>
         <input type="text" id="synopsis" name="synopsis" value="<?=$film->getSynopsis()?>">
-        <label for="type">Type :</label>
+        <label for="type">Genre :</label>
         <input type="text" id="type" name="type" value="<?=$film->getType()?>">
         <label for="scenarist">Scénariste :</label>
         <input type="text" id="scenarist" name="scenarist" value="<?=$film->getScenarist()?>">
         <label for="productionCompany">Société de production :</label>
         <input type="text" id="productionCompany" name="productionCompany" value="<?=$film->getProductionCompany()?>">
-        <label for="releaseYear">Anné de sortie :</label>
+        <label for="releaseYear">Année de sortie :</label>
         <input type="text" id="releaseYear" name="releaseYear" value="<?=$film->getReleaseYear()?>">
     </div>
     <div class="btn">

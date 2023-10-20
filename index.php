@@ -13,7 +13,6 @@ require_once 'controllers/UserController.php';
 
 session_start();
 
-require('views/includes/navbar.php');
 
 $funcName = substr($_SERVER['REQUEST_URI'], 1);
 $funcName = explode('?', $funcName)[0];
@@ -23,9 +22,10 @@ if($funcName === ""){
 }
 
 if (function_exists($funcName)){
+    require('views/includes/navbar.php');
     $funcName(...$_GET);
 
     exit(0);
 } else {    
-    die('404');
+    die('La page demandé n\'existe pas');
 }
