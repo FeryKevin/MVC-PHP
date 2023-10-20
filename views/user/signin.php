@@ -11,7 +11,7 @@
             <p>- Le mot de passe ne soit pas contenir votre identifiant</p>
             <p>- 8 caractères dont : 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial</p>
         </div>
-        <input type="text" id="password" name="password" required>
+        <input type="password" id="password" name="password" required>
     </div>    
     <div class="btn">
         <button type="submit" class="btn-add">Inscription</button>
