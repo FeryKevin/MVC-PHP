@@ -26,6 +26,3 @@
         </tbody>
     </table>
 </div>
-
- <!-- <a href='/logout'>Déconnecter</a>
- < ?php echo $_SESSION['username'];?> -->

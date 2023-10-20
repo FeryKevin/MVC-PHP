@@ -3,6 +3,24 @@
     margin: 0;
 }
 
+.navbar {
+    background-color: #696969;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+#user-name {
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.user-info {
+    font-size: 18px;
+}
+
 h1, h2{
     text-align: center;
     margin-top: 50px;
@@ -53,6 +71,7 @@ thead{
     border-radius: 15px;
     color: white;
     text-decoration: none;
+    border: none;
 }
 
 .btn2{
