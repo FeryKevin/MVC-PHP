@@ -116,3 +116,44 @@ thead{
 .password-cond{
     padding: 15px;
 }
+
+@media (max-width: 769px) {
+
+    input{
+        width: 80%;
+    }
+
+    table{
+        width: 90%;
+        text-align: center;
+    }
+
+    thead, th, td{ 
+        display: block;
+        margin: 0;
+    }
+    
+    thead tr{ 
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    td{   
+        position: relative;
+        padding-top: 40px;
+    }
+
+    td:before{    
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        font-weight: bold;
+        text-align: left;
+        content: attr(data-title);
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #ddd    
+    }
+}
